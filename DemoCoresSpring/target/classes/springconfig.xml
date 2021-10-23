@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+ <context:annotation-config></context:annotation-config>
+  
+ 
+ <context:component-scan base-package="com.zensar"></context:component-scan>
+ 
+ <bean class="com.zensar.Student" id="sobj" scope="singleton" autowire="constructor"  >
+ 
+ <!-- setter 3 ction -->
+ <property name="sid" value="101" />
+ <property name="sname" value="deepa"></property>
+ <property name="per" value="90"></property>
+ <!-- to inject list via setter -->
+ <property name="hobbies">
+ <list>
+ <value>Reading</value>
+ <value>Dancing</value>
+ </list>
+ 
+ </property>
+ 
+ <property name="map">
+ <map>
+ <entry key="a" value="9879878">
+ </entry>
+ <entry key="b" value="798798">
+ </entry>
+ </map>
+ </property>
+ 
+ 
+ </bean>
+ 
+ <bean class="com.zensar.Course" id="c1">
+ <constructor-arg value="1"></constructor-arg>
+ <constructor-arg value="java" />
+ <constructor-arg value="40000" />
+ </bean>
+ 
+ <bean class="com.zensar.Course" id="course" autowire-candidate="false">
+ <constructor-arg value="1"></constructor-arg>
+ <constructor-arg value="python" />
+ <constructor-arg value="40000" />
+ </bean>
+ 
+   <bean class="com.zensar.Student" id="sobj2">
+  <constructor-arg value="1" />
+  <constructor-arg value="kiran" />
+  <constructor-arg value="98" /> 
+  <constructor-arg ref="c1" />
+    </bean>
+ 
+ </beans>
+ 
+ 
+ 
+ 
